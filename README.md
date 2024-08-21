@@ -75,3 +75,19 @@ __Agent Machine__
   13]SonarQube Scanner </br>
   14]Sonar Quality Gates </br>
   15]Quality Gates </br>
+
+
+## Integrate Maven to Jenkins and Add GitHub Credentials to Jenkins
+
+  - Manage jenkins — tools — Maven installations — Name : Maven3 , Version: 3.9.4 Install automatically
+  - JDK installations — Name: Java17 , Install from adoptium.net — Version: jdk-17.0.5+8
+  - Add credentials for github — Credentials — new credentials
+    — kind: Username with password
+    — Scope: Global
+    — Usermame: github username
+    — password: github passwrd
+    — id: github
+
+## Install and Configure the SonarQube(On Jenkins Agent Machine)
+
+Installing SonarQube as a docker container.
