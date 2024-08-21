@@ -134,5 +134,9 @@ __Create a CI JOB :__
     
 
 
-https://github.com/user-attachments/assets/678ded91-b450-495f-a234-82d32573bbd7
+
+
+https://github.com/user-attachments/assets/adb19c63-48cf-48da-9b43-949d56ad4dfd
+
+
 
