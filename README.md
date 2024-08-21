@@ -129,6 +129,6 @@ __Create a CI JOB :__
   - Discard old builds : Max # of builds to keep 2
   - This project is parameterized : String parameterized: Name: IMAGE_TAG
   - Trigger builds remotely (e.g., from scripts): Authentication Token: gitops-token
-  - Pipeline: pipeline script from SCM : https://github.com/sagarkulkarni1989/gitops-register-app
+  - Pipeline: pipeline script from SCM : https://github.com/maheshbodkhe/gitops-register-app
 
     
