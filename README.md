@@ -132,3 +132,7 @@ __Create a CI JOB :__
   - Pipeline: pipeline script from SCM : https://github.com/maheshbodkhe/gitops-register-app
 
     
+
+
+https://github.com/user-attachments/assets/678ded91-b450-495f-a234-82d32573bbd7
+
