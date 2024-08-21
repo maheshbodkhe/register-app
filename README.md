@@ -14,3 +14,48 @@ Creating a CI/CD pipeline for a Java application to deploy on a Kubernetes clust
   - T2 Micro for Jenkins master and EKS Bootstrap server and T2.medium for Agent
   - Security Group: create new group with open All traffic- No recommended in Prod environment, its just for practice
   - Default VPC , RAM 15GB
+
+### Setup and Configuration
+
+__Jenkins Master Server__
+
+    sudo apt update
+    sudo apt install openjdk-17-jre
+    java -version
+    sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install jenkins
+    sudo systemctl enable jenkins
+    sudo systemctl status jenkins
+    
+    open file : sudo vim /etc/ssh/sshd_config  - remove comment for below keys
+    PubkeyAuthentication yes 
+      AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
+    
+    sudo service sshd reload
+    Generate ssh key  : ssh-keygen
+    
+    # Execute it when you setup agent machine
+    Copy id_rsa.pub file content to agent - <User>/.ssh/authorized_keys (do not remove exisiting content just add it to new line)
+
+
+__Agent Machine__
+    
+    sudo apt update
+    sudo apt install openjdk-17-jre
+    sudo apt-get install docker.io
+    docker --version
+    sudo usermod -aG docker $USER
+    sudo init 6
+    
+    open file : sudo vim /etc/ssh/sshd_config  remove comment for below values
+      PubkeyAuthentication yes 
+      AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
+    
+    sudo service sshd reload
+
+
+  - Open Jenkins UI : http:<Public_IP_of_jenkinsmaster>:8080
+  - Copy initial password from cat /var/lib/jenkins/secrets/initialAdminPassword and install suggested plugins
+  - Install Below plugins
