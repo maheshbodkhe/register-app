@@ -97,20 +97,38 @@ __Integrate SonarQube with Jenkins__
   - Login to sonarqube UI — <Server_public_IP>:9000
   - default credentials: admin/admin
   - Go to my account- security — Generate Token — Name: jenkins sonarqube-token Type: Global analysis token
-  - Jenkins — manage jenkins- credentials
-      — kind: Secret text
-      — scope: global
-      — secret : copy token which is generated in sonarqube-token
-      — ID: jenkins-sonarqube-token
-  - Manage jenkins — system — SonarQube servers- SonarQube installations
-        Name: sonarqube-server
-        Server URL:
-        credentials : token
-        apply and save
-  - Manage jenkins — Tools — SonarQube Scanner installations — Add SonarQube Scanner
-      name: sonarqube-scanner
-      tick on — install automatically
-      version: sonarqube scanner 5.0.1.3006
-      apply and save
+  - Jenkins — manage jenkins- credentials <br/>
+      — kind: Secret text <br/>
+      — scope: global <br/>
+      — secret : copy token which is generated in sonarqube-token <br/>
+      — ID: jenkins-sonarqube-token <br/>
+  - Manage jenkins — system — SonarQube servers- SonarQube installations <br/>
+        Name: sonarqube-server <br/>
+        Server URL: <br/>
+        credentials : token <br/>
+        apply and save <br/>
+  - Manage jenkins — Tools — SonarQube Scanner installations — Add SonarQube Scanner <br/>
+      name: sonarqube-scanner <br/>
+      tick on — install automatically <br/>
+      version: sonarqube scanner 5.0.1.3006 <br/>
+      apply and save <br/>
   - Add sonarqube webhook configuration — Sonarqube — Administration- configuration — webhooks — create name : sonarqube-webhook
     URL: http://<Jenkins_master_private_IP>:8080/sonarqube-webhook/
+
+__Build and Push Docker Image using Pipeline Script__
+
+__Create a CI JOB :__
+
+  - Setup Kubernetes using eksctl(On Bootstrap server)
+  - Create a IAM Role and assign it to Bootstrap server
+  - Create a cluster
+  - ArgoCD Installation on EKS Cluster and Add EKS Cluster to ArgoCD
+
+## Create a Jenkins CD Job
+  - name: gitops-register-app-cd
+  - Discard old builds : Max # of builds to keep 2
+  - This project is parameterized : String parameterized: Name: IMAGE_TAG
+  - Trigger builds remotely (e.g., from scripts): Authentication Token: gitops-token
+  - Pipeline: pipeline script from SCM : https://github.com/sagarkulkarni1989/gitops-register-app
+
+    
