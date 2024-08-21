@@ -77,7 +77,7 @@ __Agent Machine__
   15]Quality Gates </br>
 
 
-## Integrate Maven to Jenkins and Add GitHub Credentials to Jenkins
+__Integrate Maven to Jenkins and Add GitHub Credentials to Jenkins__
 
   - Manage jenkins — tools — Maven installations — Name : Maven3 , Version: 3.9.4 Install automatically
   - JDK installations — Name: Java17 , Install from adoptium.net — Version: jdk-17.0.5+8
@@ -88,6 +88,29 @@ __Agent Machine__
     — password: github passwrd
     — id: github
 
-## Install and Configure the SonarQube(On Jenkins Agent Machine)
+__Install and Configure the SonarQube(On Jenkins Agent Machine)__
 
 Installing SonarQube as a docker container.
+
+__Integrate SonarQube with Jenkins__
+
+  - Login to sonarqube UI — <Server_public_IP>:9000
+  - default credentials: admin/admin
+  - Go to my account- security — Generate Token — Name: jenkins sonarqube-token Type: Global analysis token
+  - Jenkins — manage jenkins- credentials
+      — kind: Secret text
+      — scope: global
+      — secret : copy token which is generated in sonarqube-token
+      — ID: jenkins-sonarqube-token
+  - Manage jenkins — system — SonarQube servers- SonarQube installations
+        Name: sonarqube-server
+        Server URL:
+        credentials : token
+        apply and save
+  - Manage jenkins — Tools — SonarQube Scanner installations — Add SonarQube Scanner
+      name: sonarqube-scanner
+      tick on — install automatically
+      version: sonarqube scanner 5.0.1.3006
+      apply and save
+  - Add sonarqube webhook configuration — Sonarqube — Administration- configuration — webhooks — create name : sonarqube-webhook
+    URL: http://<Jenkins_master_private_IP>:8080/sonarqube-webhook/
