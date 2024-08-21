@@ -59,3 +59,19 @@ __Agent Machine__
   - Open Jenkins UI : http:<Public_IP_of_jenkinsmaster>:8080
   - Copy initial password from cat /var/lib/jenkins/secrets/initialAdminPassword and install suggested plugins
   - Install Below plugins
+
+  1]Docker </br>
+  2]Docker Commons </br>
+  3]Docker Pipeline </br>
+  4]Docker API </br>
+  5]docker-build-step </br>
+  6]CloudBees Docker Build and Publish </br>
+  7]Maven Integration Pipeline </br>
+  8]Maven Integration </br>
+  9]Eclipse Temurin installer </br>
+  10]Maven Integration Pipeline </br>
+  11]Maven Integration </br>
+  12]Eclipse Temurin installer </br>
+  13]SonarQube Scanner </br>
+  14]Sonar Quality Gates </br>
+  15]Quality Gates </br>
